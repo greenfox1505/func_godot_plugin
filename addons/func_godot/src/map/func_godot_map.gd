@@ -895,12 +895,13 @@ func apply_properties_and_finish() -> void:
 		
 		var entity_dict: Dictionary = entity_dicts[entity_idx] as Dictionary
 		var properties: Dictionary = entity_dict['properties'] as Dictionary
-		
+		var override_node_properties = false
+
 		if 'classname' in properties:
 			var classname: String = properties['classname']
 			if classname in entity_definitions:
 				var entity_definition: FuncGodotFGDEntityClass = entity_definitions[classname] as FuncGodotFGDEntityClass
-				
+				override_node_properties = entity_definition.override_node_properties
 				for property in properties:
 					var prop_string = properties[property]
 					if property in entity_definition.class_properties:
@@ -1010,7 +1011,10 @@ func apply_properties_and_finish() -> void:
 		
 		if 'func_godot_properties' in entity_node:
 			entity_node.func_godot_properties = properties
-		
+		if override_node_properties:
+			for i in properties:
+				if i in entity_node:
+					entity_node[i] = properties[i]
 		properties_arr.append(properties.duplicate(true))
 	
 	for entity_idx in range(0, entity_nodes.size()):
