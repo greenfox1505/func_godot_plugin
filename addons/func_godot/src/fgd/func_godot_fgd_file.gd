@@ -60,10 +60,10 @@ func do_export_file(target_editor: FuncGodotTargetMapEditors = FuncGodotTargetMa
 @export var fgd_name: String = "FuncGodot"
 
 ## Array of [FuncGodotFGDFile] resources to include in FGD file output. All of the entities included with these FuncGodotFGDFile resources will be prepended to the outputted FGD file.
-@export var base_fgd_files: Array[Resource] = []
+@export var base_fgd_files: Array[FuncGodotFGDFile] = []
 
 ## Array of resources that inherit from [FuncGodotFGDEntityClass]. This array defines the entities that will be added to the exported FGD file and the nodes that will be generated in a [FuncGodotMap].
-@export var entity_definitions: Array[Resource] = []
+@export var entity_definitions: Array[FuncGodotFGDEntityClass] = []
 
 func build_class_text(target_editor: FuncGodotTargetMapEditors = FuncGodotTargetMapEditors.TRENCHBROOM) -> String:
 	var res : String = ""

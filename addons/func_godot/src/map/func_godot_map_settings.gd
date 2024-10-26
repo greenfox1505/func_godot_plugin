@@ -32,7 +32,7 @@ extends Resource
 @export var origin_texture: String = "special/origin"
 
 ## Optional [QuakeWADFile] resources to apply textures from. See the [Quake Wiki](https://quakewiki.org/wiki/Texture_Wad) for more information on Quake Texture WADs.
-@export var texture_wads: Array[Resource] = []
+@export var texture_wads: Array[QuakeWADFile] = []
 
 @export_category("Materials")
 
